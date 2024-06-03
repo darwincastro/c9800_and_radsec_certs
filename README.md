@@ -73,7 +73,8 @@ mv radsec.key /etc/freeradius/3.0/certs/radsec.key
 
 ### Bonus: Create a PKCS#12 File
 
-If you want to create a PKCS#12 file for your WLC, use the following command in the same working directory:
+For version 17.12.1 or above :
+Create a PKCS#12 file for your WLC, use the following command in the same working directory:
 
 ```sh
 openssl pkcs12 -export -out radsec_chain.pfx -inkey wlc.key -in wlc.pem -certfile ca.pem
