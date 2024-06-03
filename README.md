@@ -71,6 +71,16 @@ mv radsec.pem /etc/freeradius/3.0/certs/radsec.pem
 mv radsec.key /etc/freeradius/3.0/certs/radsec.key
 ```
 
+### Bonus: Create a PKCS#12 File
+
+If you want to create a PKCS#12 file for your WLC, use the following command in the same working directory:
+
+```sh
+openssl pkcs12 -export -out radsec_chain.pfx -inkey wlc.key -in wlc.pem -certfile ca.pem
+```
+
+This command creates a PKCS#12 file named radsec_chain.pfx, containing the WLC key, WLC certificate, and CA certificate.
+
 > [!IMPORTANT]  
 > - Ensure the .ca.cnf and .device.cnf configuration files are correctly set up and present in the same directory as the script.
 > - The script assumes the password specified in the .env file is cisco. Adjust the password as needed.
