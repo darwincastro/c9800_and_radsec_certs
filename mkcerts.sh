@@ -20,8 +20,8 @@ openssl req -x509 -sha256 -new -nodes -key ca.key -days 14610 -out ca.pem -confi
 
 # Generate WLC key and certificate
 echo -e "${CYAN}Generating WLC key${RESET}"
-openssl genrsa -des3 -out wlc.key -passout ${PASS}:cisco 4096 && echo -e "\n${YELLOW}Please add the WLC information${RESET}"
-openssl req -new -sha256 -key wlc.key -out wlc.csr -config .device.cnf -passin ${PASS}:cisco
+openssl genrsa -des3 -out wlc.key -passout pass:${PASS} 4096 && echo -e "\n${YELLOW}Please add the WLC information${RESET}"
+openssl req -new -sha256 -key wlc.key -out wlc.csr -config .device.cnf -passin pass:${PASS}
 
 echo -e "\n${YELLOW}Please copy the above WLC FQDN input${RESET}" && read -p 'paste here: ' wlc_fqdn
 echo -e "\n${YELLOW}Please enter your WLC IP${RESET}" && read -p 'IP: ' wlc_ip
@@ -40,8 +40,8 @@ openssl x509 -req -sha256 -in wlc.csr -CA ca.pem -CAkey ca.key -CAcreateserial -
 
 # Generate RADSEC Server key and certificate
 echo -e "${CYAN}Generating RADSEC Server key${RESET}"
-openssl genrsa -des3 -out radsec.key -passout ${PASS}:cisco 4096 && echo -e "\n${YELLOW}Please add the RADSEC Server information${RESET}"
-openssl req -new -sha256 -key radsec.key -out radsec.csr -config .device.cnf -passin ${PASS}:cisco
+openssl genrsa -des3 -out radsec.key -passout pass:${PASS} 4096 && echo -e "\n${YELLOW}Please add the RADSEC Server information${RESET}"
+openssl req -new -sha256 -key radsec.key -out radsec.csr -config .device.cnf -passin pass:${PASS}
 
 echo -e "\n${YELLOW}Please copy the above RADSEC Server FQDN input${RESET}" && read -p 'paste here: ' radsec_fqdn
 echo -e "\n${YELLOW}Please enter your RADSEC Server IP${RESET}" && read -p 'IP: ' radsec_ip
