@@ -85,3 +85,7 @@ This command creates a PKCS#12 file named radsec_chain.pfx, containing the WLC k
 > [!IMPORTANT]  
 > - Ensure the .ca.cnf and .device.cnf configuration files are correctly set up and present in the same directory as the script.
 > - The script assumes the password specified in the .env file is cisco. Adjust the password as needed.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
